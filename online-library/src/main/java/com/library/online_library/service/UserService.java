@@ -6,6 +6,10 @@ import com.library.online_library.dto.user.UserResponseDTO;
 
 public interface UserService {
     UserResponseDTO createUser(UserRequestDTO userRequestDTO);
+
     UserResponseDTO getUserById(Long id);
+
     Long loginUser(UserLoginDTO userLoginDTO);
+
+    Boolean isAuthenticateUser(Long id);
 }

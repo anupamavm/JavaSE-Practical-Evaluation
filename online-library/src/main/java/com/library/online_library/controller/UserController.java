@@ -37,7 +37,7 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getUser(@PathVariable Long id, HttpSession session) {
         Long loggedInUserId = (Long) session.getAttribute("userId");
-        if (loggedInUserId == null || !loggedInUserId.equals(id)) {
+        if (loggedInUserId == null || !userService.isAuthenticateUser(loggedInUserId)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized access");
         }
         UserResponseDTO user = userService.getUserById(id);
